@@ -30,6 +30,7 @@ class LRUCache:
             return node.value[1]
         else:
             return None
+            
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -50,8 +51,10 @@ class LRUCache:
             return
         if self.size == self.limit:
             
-            del self.storage[self.order.head.value[0]]
-            self.order.remove_from_head()
+            # del self.storage[self.order.head.value[0]]
+            # self.order.remove_from_head()
+
+            del self.storage[self.order.remove_from_head()[0]]
             self.size -= 1
         
         self.order.add_to_tail((key, value))
