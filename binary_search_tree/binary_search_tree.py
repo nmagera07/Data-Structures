@@ -30,7 +30,9 @@ class BinarySearchTree:
     def contains(self, target):
         # To search a given key in Binary ¸¸¸¸¸¸¸¸¸compare it with root, if the key is present at root, we return root. If key is greater than root's key, we recur for right subtree of root¸¸¸¸¸¸¸¸¸r left subtree. 
         if self.value == target:
+            print(target)
             return True
+            
         
         if target < self.value:
             if not self.left:
@@ -47,21 +49,32 @@ class BinarySearchTree:
     # Return the maximum value found in th¸¸¸¸¸¸¸¸¸
     def get_max(self):
         # go right until the end
-        pass
+        if not self.right:
+            return self.value
+        else:
+            return self.right.get_max()
+
 
     # Call the function `cb` on the value ¸¸¸¸¸¸¸¸¸
     # You may use a recursive or iterative¸¸¸¸¸¸¸¸¸
     def for_each(self, cb):
         # visit every node exactly one tim¸¸¸¸¸¸¸¸¸
         # go left until you can't anymore,¸¸¸¸¸¸¸¸¸
-        pass
+        cb(self.value)
+
+        if self.left:
+            self.left.for_each(cb)
+        if self.right:
+            self.right.for_each(cb)
 
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if node:
+            self.in_order_print(node.left)
+            self.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
